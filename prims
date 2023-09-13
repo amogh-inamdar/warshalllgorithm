@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <limits.h>
+
+#define V 5 // Number of vertices in the graph
+
+// Function to find the vertex with the minimum key value
+int minKey(int key[], bool mstSet[]) {
+    int min = INT_MAX, min_index;
+
+    for (int v = 0; v < V; v++) {
+        if (!mstSet[v] && key[v] < min) {
+            min = key[v];
+            min_index = v;
+        }
+    }
+
+    return min_index;
+}
+
+// Function to print the MST
+void printMST(int parent[], int graph[V][V]) {
+    printf("Edge   Weight\n");
+    for (int i = 1; i < V; i++) {
+        printf("%d - %d    %d\n", parent[i], i, graph[i][parent[i
